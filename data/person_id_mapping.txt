@@ -1,0 +1,17 @@
+P4954,Nāgārjuna
+P7401,Aryadeva
+P4CZ10516,Buddhapālita
+P4CZ15237,Bhavaviveka
+P5782,Candrakīrti
+P6161,Śāntideva
+P5659,Śantarakṣita
+P4CZ15294,Kamalaraksita
+P6117,​Asaṅga
+P6119,Vasubandhu
+P6126,Dignaga
+P6120,dharmakirti
+P4CZ15637,Vimuktasena
+P5519,P7297,Haribhadra
+P6242,Guṇaprabha
+P0AT0383,Śākyaprabha
+P3379,atisha
