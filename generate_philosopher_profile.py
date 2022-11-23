@@ -28,7 +28,7 @@ def get_cover_image(instance_id):
     if not buda_scan_info:
         return ""
     cover_image_link = get_cover_image_link(instance_id, buda_scan_info)
-    cover_image = f'=IMAGE("{cover_image_link}")'
+    cover_image = f"=IMAGE(\"{cover_image_link}\")"
     return cover_image
 
 def parse_philo_instance(philo_instance):
@@ -38,14 +38,13 @@ def parse_philo_instance(philo_instance):
     work_id = philo_instance[0]
     if "bdr:M" in philo_instance[1]:
         instance_id = philo_instance[1][4:]
-        instance = f"[{philo_instance[1]}](https://library.bdrc.io/show/bdr:{instance_id})"
+        instance = f"=HYPERLINK(\"https://library.bdrc.io/show/bdr:{instance_id}\",\"{philo_instance[1]}\")"
         cover_image = get_cover_image(instance_id)
     else:
         instance = philo_instance[1]
         cover_image = ""
     title = philo_instance[2]
     
-
     instance_info.append(work_id)
     instance_info.append(instance)
     instance_info.append(title)
@@ -57,14 +56,14 @@ def parse_philo_instance(philo_instance):
 
 def get_philosopher_profile(philo_id, philo_name):
     philo_profile = []
-    profile_headers = ["Work","Instance","Title","Cover"]
+    profile_headers = ["Work","Instance","Cover","Title"]
 
 
     bdrc_philo_profile = get_bdrc_philo_profile(philo_id)
     for philo_instance in bdrc_philo_profile:
         philo_profile.append(parse_philo_instance(philo_instance))
 
-    filename = f"./data/philo_profiles/{philo_name}_{philo_id}.xls"
+    filename = f"./data/philo_profiles/{philo_name}_{philo_id}.csv"
     with open(filename, 'w') as csvfile: 
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(profile_headers) 
@@ -75,4 +74,3 @@ if __name__ == "__main__":
     philo_id = "test"
     philo_name = "test_philo"
     get_philosopher_profile(philo_id, philo_name)
-
